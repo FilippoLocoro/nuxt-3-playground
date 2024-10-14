@@ -1,8 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
+  modules: ['@nuxthub/core', '@nuxt/image', '@nuxt/eslint', '@nuxt/icon', '@nuxt/content', '@nuxt/fonts', '@nuxt/scripts', '@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@formkit/nuxt'],
+  runtimeConfig: {
+    mailjet: {
+      publicKey: process.env.MJ_APIKEY_PUBLIC || 'your-api-key',
+      privateKey: process.env.MJ_APIKEY_PRIVATE || 'your-api-secret'
+    }
+  },
   devtools: { enabled: true },
-  modules: ['@nuxthub/core'],
   hub: {
     database: true,
     kv: true,
@@ -13,5 +19,23 @@ export default defineNuxtConfig({
     experimental: {
       openAPI: true
     }
+  },
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+  },
+  formkit: {
+    // Experimental support for auto loading (see note):
+    autoImport: true
+  },
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English (US)' },
+      { code: 'en-GB', language: 'en-GB', name: 'English (UK)' },
+      { code: 'fr', language: 'fr-FR', name: 'Français' },
+      { code: 'it', language: 'it-IT', name: 'Italiano' },
+      { code: 'de', language: 'de-DE', name: 'Deutsch' },
+    ],
+    defaultLocale: 'it',
   },
 })
