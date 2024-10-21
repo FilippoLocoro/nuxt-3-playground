@@ -28,6 +28,11 @@ export default defineNuxtConfig({
     // Experimental support for auto loading (see note):
     autoImport: true
   },
+  eslint: {
+    config: {
+      stylistic: true,
+    }
+  },
   i18n: {
     locales: [
       { code: 'en', language: 'en-US', name: 'English (US)' },
