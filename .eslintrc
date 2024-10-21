@@ -1,0 +1,17 @@
+{
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/vue3-recommended",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "vue/max-attributes-per-line": [
+        "error",
+        {
+          "singleline": 1,
+          "multiline": 1
+        }
+      ]
+    }
+  }
+  
