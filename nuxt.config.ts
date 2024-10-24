@@ -14,6 +14,9 @@ export default defineNuxtConfig({
     '@formkit/nuxt',
   ],
   runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE_URL || 'https://api.example.com', // Define public runtime config for API base URL
+    },
     emails: {
       master: process.env.MASTER_EMAIL || '',
       from: process.env.FROM_EMAIL || '',
@@ -34,6 +37,9 @@ export default defineNuxtConfig({
   nitro: {
     experimental: {
       openAPI: true,
+    },
+    prerender: {
+      routes: ['/', '/about', '/contact'], // Pre-render important routes for SEO and performance
     },
   },
   tailwindcss: {
@@ -59,4 +65,13 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'it',
   },
+  build: {
+    analyze: true, // Enable bundle analysis for performance optimization
+  },
+  typescript: {
+    strict: true, // Enforce strict TypeScript checks
+  },
+  // generate: {
+  //   fallback: true, // Ensure correct fallback for static hosting
+  // },
 });
