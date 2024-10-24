@@ -6,4 +6,3 @@
   </div>
   <!-- <Footer /> -->
 </template>
-  

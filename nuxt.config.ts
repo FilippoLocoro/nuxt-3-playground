@@ -1,12 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  modules: ['@nuxthub/core', '@nuxt/image', '@nuxt/eslint', '@nuxt/icon', '@nuxt/content', '@nuxt/fonts', '@nuxt/scripts', '@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@formkit/nuxt'],
+  modules: [
+    '@nuxthub/core',
+    '@nuxt/image',
+    '@nuxt/eslint',
+    '@nuxt/icon',
+    '@nuxt/content',
+    '@nuxt/fonts',
+    '@nuxt/scripts',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/i18n',
+    '@formkit/nuxt',
+  ],
   runtimeConfig: {
+    emails: {
+      master: process.env.MASTER_EMAIL || '',
+      from: process.env.FROM_EMAIL || '',
+      bcc: process.env.BCC_EMAIL || '',
+    },
     mailjet: {
       publicKey: process.env.MJ_APIKEY_PUBLIC || 'your-api-key',
-      privateKey: process.env.MJ_APIKEY_PRIVATE || 'your-api-secret'
-    }
+      privateKey: process.env.MJ_APIKEY_PRIVATE || 'your-api-secret',
+    },
   },
   devtools: { enabled: true },
   hub: {
@@ -17,8 +33,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     experimental: {
-      openAPI: true
-    }
+      openAPI: true,
+    },
   },
   tailwindcss: {
     exposeConfig: true,
@@ -26,12 +42,12 @@ export default defineNuxtConfig({
   },
   formkit: {
     // Experimental support for auto loading (see note):
-    autoImport: true
+    autoImport: true,
   },
   eslint: {
     config: {
       stylistic: true,
-    }
+    },
   },
   i18n: {
     locales: [
@@ -43,4 +59,4 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'it',
   },
-})
+});
