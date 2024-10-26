@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
       Messages: [
         {
           From: { Email: config.emails.from, Name: fromName },
-          To: [{ Email: config.emails.master, Name: toName }],
+          To: [{ Email: config.emails.rent, Name: toName }],
           ReplyTo: { Email: email, Name: customer },
           Bcc: [{ Email: config.emails.bcc, Name: toName }],
           TemplateLanguage: true,

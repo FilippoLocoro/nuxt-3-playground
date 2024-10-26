@@ -18,7 +18,7 @@ export default defineNuxtConfig({
       apiBase: process.env.API_BASE_URL || 'https://api.example.com', // Define public runtime config for API base URL
     },
     emails: {
-      master: process.env.MASTER_EMAIL || '',
+      rent: process.env.RENT_EMAIL || '',
       from: process.env.FROM_EMAIL || '',
       bcc: process.env.BCC_EMAIL || '',
     },
