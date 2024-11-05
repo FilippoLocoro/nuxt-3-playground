@@ -1,3 +1,5 @@
+import graphqlLoader from 'vite-plugin-graphql-loader';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
@@ -6,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@nuxt/content',
     '@nuxt/fonts',
     '@nuxt/scripts',
     '@nuxtjs/tailwindcss',
@@ -16,6 +17,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: process.env.API_BASE_URL || 'https://api.example.com', // Define public runtime config for API base URL
+      datocms: {
+        apiToken: process.env.NUXT_ENV_DATOCMS_READ_ONLY_API_TOKEN || '',
+      },
     },
     emails: {
       rent: process.env.RENT_EMAIL || '',
@@ -23,8 +27,8 @@ export default defineNuxtConfig({
       bcc: process.env.BCC_EMAIL || '',
     },
     mailjet: {
-      publicKey: process.env.MJ_APIKEY_PUBLIC || 'your-api-key',
-      privateKey: process.env.MJ_APIKEY_PRIVATE || 'your-api-secret',
+      publicKey: process.env.MJ_APIKEY_PUBLIC || '',
+      privateKey: process.env.MJ_APIKEY_PRIVATE || '',
     },
   },
   devtools: { enabled: true },
@@ -33,6 +37,9 @@ export default defineNuxtConfig({
     kv: true,
     blob: false, // Please enable R2 Storage on your Cloudflare account to leverage Blob storage and try again: https://dash.cloudflare.com/37d02e01a9ccea9dd863b8e8bc7485c0/r2/plans
     cache: false,
+  },
+  vite: {
+    plugins: [graphqlLoader()],
   },
   nitro: {
     experimental: {

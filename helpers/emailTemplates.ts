@@ -78,4 +78,5 @@ export function generateReservationEmailTemplate({
     <div>Marketing: ${marketingFlag}</div>
     <h2>Id prenotazione</h2>
     <div>${reservationId}</div>
+`;
 }

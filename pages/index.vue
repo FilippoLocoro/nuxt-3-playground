@@ -1,3 +1,8 @@
 <template>
-  <div>Index</div>
+  <div>Homepage</div>
 </template>
+
+
+<script setup>
+
+</script>

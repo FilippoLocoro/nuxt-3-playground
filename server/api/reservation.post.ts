@@ -98,6 +98,20 @@ export default defineEventHandler(async (event) => {
       reservationId,
     });
 
+    if (marketingFlag) {
+      const response = await $fetch('/api/contact', {
+        method: 'POST',
+        body: {
+          firstname,
+          lastname,
+          email,
+          marketingFlag,
+        },
+      });
+
+      console.log('api/contacts/ - resposne', response);
+    }
+
     const sendRequest = await mailjet.post('send', { version: 'v3.1' }).request({
       Messages: [
         {
