@@ -65,12 +65,10 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'en', language: 'en-US', name: 'English (US)' },
-      { code: 'en-GB', language: 'en-GB', name: 'English (UK)' },
-      { code: 'fr', language: 'fr-FR', name: 'Français' },
       { code: 'it', language: 'it-IT', name: 'Italiano' },
-      { code: 'de', language: 'de-DE', name: 'Deutsch' },
     ],
     defaultLocale: 'it',
+    vueI18n: './i18n.config.ts',
   },
   build: {
     analyze: true, // Enable bundle analysis for performance optimization
