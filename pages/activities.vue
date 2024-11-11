@@ -2,7 +2,7 @@
     <div v-for="activity in activities" :key="activity.slug">
         <nuxt-link :to="`/activities/${activity.slug}`">
             <h2>{{ activity.title }}</h2>
-            <datocms-structured-text :data="activity.content" />
+            <!-- <datocms-structured-text :data="activity.content" /> -->
         </nuxt-link>
     </div>
 </template>

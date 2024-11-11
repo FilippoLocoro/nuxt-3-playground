@@ -25,6 +25,8 @@
     "@nuxthub/core": "^0.7.26",
     "@nuxtjs/i18n": "9.0.0-rc.2",
     "@nuxtjs/tailwindcss": "^6.12.2",
+    "date-fns": "^4.1.0",
+    "flyonui": "^1.1.0",
     "graphql-request": "^7.1.2",
     "graphql-tag": "^2.12.6",
     "http-proxy-middleware": "^3.0.3",

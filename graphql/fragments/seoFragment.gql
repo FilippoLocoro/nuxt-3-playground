@@ -1,7 +1,0 @@
-fragment SeoFields on Seo {
-  description
-  title
-  image {
-    url
-  }
-}
