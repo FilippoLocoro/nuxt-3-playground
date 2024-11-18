@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@formkit/nuxt',
   ],
   plugins: ['~/plugins/flyonui.client.ts'],
+  css: ['~/assets/main.css'],
   runtimeConfig: {
     public: {
       apiBase: process.env.API_BASE_URL || 'https://api.example.com', // Define public runtime config for API base URL

@@ -1,52 +1,37 @@
 <template>
     <div>
-        {{ category.title }}
+        {{ page.title }}
     </div>
 </template>
 
 <script setup>
 import { StructuredText as DatocmsStructuredText } from 'vue-datocms';
-
+import { pageQuery, allActivitiesQuery } from '~/utils/graphql'
 const { locale } = useI18n()
 const route = useRoute()
+const page = ref({})
+const slug = ref(route.params.slug || '')
 
-const slug = route.params.slug || '';
+async function fetchData() {
+    try {
+        const pageData = await useGraphqlQuery({
+            query: pageQuery,
+            variables: { slug: slug.value, locale: locale.value }
+        });
 
-const query = `
-  query Category($slug: String!, $locale: SiteLocale!) {
-      category(locale: $locale, filter: {slug: {eq: $slug}}) {
-          id
-          title
-          slug
-          featuredImage {
-              responsiveImage {
-                  aspectRatio
-                  alt
-                  base64
-                  bgColor
-                  height
-                  sizes
-                  src
-                  srcSet
-                  title
-                  webpSrcSet
-                  width
-              }
-              height
-              url
-              width
-          }
-      }
-  }
-`;
+        page.value = pageData?.data?.value?.page || {};
 
-const { data, loading, error } = await useGraphqlQuery({
-    query,
-    variables: {
-        slug,
-        locale: locale.value
+        console.log(slug.value)
+
+        const activities = await useGraphqlQuery({
+            query: allActivitiesQuery,
+            variables: { category: slug.value || '', locale: locale.value }
+        });
+        console.log('activities', activities)
+    } catch (error) {
+        console.error("Error fetching data:", error);
     }
-});
+}
 
-const category = data.value?.category || [];
+fetchData();
 </script>
