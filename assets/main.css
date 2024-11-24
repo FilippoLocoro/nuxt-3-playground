@@ -1,27 +1,39 @@
 h1 {
-    @apply text-base-content/90 text-4xl mb-2;
+  @apply text-black text-4xl mb-2;
 }
 
 h2 {
-    @apply text-base-content/90 text-3xl mb-1.5;
+  @apply text-black text-3xl mb-1.5;
 }
 
 h3 {
-    @apply text-base-content/90 text-2xl mb-1.5;
+  @apply text-black text-2xl mb-1.5;
 }
 
 h4 {
-    @apply text-base-content/90 text-xl mb-1;
+  @apply text-black text-xl mb-1;
 }
 
 h5 {
-    @apply text-base-content/90 text-lg mb-1;
+  @apply text-black text-lg mb-1;
 }
 
 h6 {
-    @apply text-base-content/90 text-base mb-0.5;
+  @apply text-black text-base mb-0.5;
 }
 
 .block {
-    @apply mb-4;
+  @apply mb-4;
+}
+.block--no-margin {
+  @apply my-0 mx-0;
+}
+.menu {
+  @apply bg-white text-black;
+}
+:where(.menu li:not(.menu-title, .disabled, [disabled], :disabled)) {
+  @apply text-black;
+}
+.menu :where(li:not(.menu-title, .tooltip) > *:not(ul, .collapse, .menu-title, .btn)) {
+  @apply px-0 py-2;
 }

@@ -1,7 +1,9 @@
 <template>
-  <Navbar />
-  <slot />
-  <!-- <Footer /> -->
+  <div class="relative h-full w-full">
+    <Navbar />
+    <slot />
+    <!-- <Footer /> -->
+  </div>
 </template>
 
 <script setup>

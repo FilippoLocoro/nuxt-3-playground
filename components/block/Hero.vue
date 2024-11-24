@@ -1,18 +1,24 @@
 <template>
-    <section class="block">
-        <div class="hero relative flex items-center justify-center min-h-[60vh] p-5 bg-cover bg-center text-center text-white"
+    <section class="block" :class="['block', { 'block--no-margin': noMargin }]">
+        <div class="hero relative flex items-center justify-center min-h-[60vh] p-5 bg-cover bg-center text-center text-white bg-center"
             :style="{ 'background-image': `url(${block.image?.url || 'default-image.jpg'})` }">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
             <div class="relative z-10 max-w-2xl mx-auto">
                 <h1 v-if="block.title" class="text-2xl font-bold leading-tight mb-3 md:text-3xl lg:text-4xl text-white">
                     {{ block.title }}
                 </h1>
-                <h2 class="text-sm font-light md:text-lg lg:text-xl text-white">Lorem ipsum</h2>
+                <h2 v-if="block.subtitle" class="text-sm font-light md:text-lg lg:text-xl text-white">{{ block.subtitle
+                    }}
+                </h2>
+                <!-- <span v-if="block.category" class="badge badge-primary badge-xl uppercase"
+                    :class="['badge badge-xl', { 'badge-primary': isCategorySki, 'badge-secondary': isCategorySnowboard }]">
+                    {{ block.category }}
+                </span> -->
             </div>
         </div>
-        <div class="container mx-auto p-8">
+        <!-- <div class="container mx-auto p-8">
             <datocms-structured-text :data="block.content" />
-        </div>
+        </div> -->
     </section>
 </template>
 
@@ -21,6 +27,6 @@
 <script setup lang="ts">
 import { StructuredText as DatocmsStructuredText } from 'vue-datocms';
 
-const { block = {} } = defineProps<{ block?: any }>()
+const { block = {}, noMargin = false } = defineProps<{ block?: any; noMargin?: boolean }>()
 
 </script>

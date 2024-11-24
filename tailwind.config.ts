@@ -15,7 +15,19 @@ export default <Partial<Config>>{
   // ],
   darkMode: ['class', '[data-theme="dark"]'],
   flyonui: {
-    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "soft"]
+    themes: [
+      {
+        v1: {
+          primary: '#E0211FFF',
+          secondary: '#1F2B48FF',
+          accent: '#37cdbe',
+          neutral: '#3d4451',
+          'base-100': '#ffffff',
+        },
+      },
+      'dark',
+      'light',
+    ],
     darkTheme: 'dark', // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include FlyonUI colors and design decisions for all components

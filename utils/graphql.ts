@@ -91,9 +91,28 @@ export const siteQuery = `
   ${seoMetaTagsFields}
 `;
 
+export const AllPagesLinks = `
+  query AllPagesLinks($locale: SiteLocale!) {
+    allPages(locale: $locale) {
+      id
+      title(locale: $locale)
+      slug
+      menuPosition
+      activities {
+        slug
+        title
+        category
+      }
+    }
+  }
+`;
+
 export const PageBySlugQuery = `
 query PageBySlug($slug: String!, $locale: SiteLocale!) {
   page(filter: {slug: {eq: $slug}}, locale: $locale) {
+    id
+    slug
+    title(locale: $locale)
     blocks(locale: $locale) {
       ... on ContactRecord {
         email
@@ -119,10 +138,11 @@ query PageBySlug($slug: String!, $locale: SiteLocale!) {
         _isValid
       }
       ... on HeroRecord {
-        title
         _isValid
         _modelApiKey
         id
+        title
+        subtitle
         content {
           blocks
           links
@@ -169,9 +189,6 @@ query PageBySlug($slug: String!, $locale: SiteLocale!) {
         }
       }
     }
-    id
-    slug(locale: $locale)
-    title(locale: $locale)
   }
 }
 ${FileFieldFragment}
@@ -198,7 +215,7 @@ ${FileFieldFragment}
 export const categoryQuery = `
 query Category($slug: String!, $locale: SiteLocale!) {
   category(locale: $locale, filter: {slug: {eq: $slug}}) {
-    slug(locale: $locale)
+    slug(
     title(locale: $locale)
     id
     featuredImage {
@@ -218,20 +235,18 @@ query AllCategories($locale: SiteLocale!) {
   allCategories {
     id
     title(locale: $locale)
-    slug(locale: $locale)
+    slug(
     featuredImage {
       ...FileFieldFragment
     }
     link {
-      slug(locale: $locale)
+      slug(
       title(locale: $locale)
     }
   }
 }
 ${FileFieldFragment}
 `;
-// query AllActivities($locale: SiteLocale!, $category: String) {
-//   allActivities(filter: {category: {eq: $category}})
 
 export const allActivitiesQuery = `
 query AllActivities($locale: SiteLocale!, $category: String) {
@@ -257,7 +272,7 @@ query AllActivities($locale: SiteLocale!, $category: String) {
     price3(locale: $locale)
     price4(locale: $locale)
     pricesIntro(locale: $locale)
-    slug(locale: $locale)
+    slug(
     specialPrice1(locale: $locale)
     specialPrice2(locale: $locale)
     specialPrice3(locale: $locale)
@@ -277,6 +292,35 @@ query AllActivities($locale: SiteLocale!, $category: String) {
 }
 ${ActivityModelContentFieldFragment}
 ${FileFieldFragment}
+`;
+
+export const ActivityBySlugQuery = `
+  query ActivityBySlug($slug: String!, $locale: SiteLocale!) {
+    activity(filter: {slug: {eq: $slug}}, locale: $locale) {
+      order
+      category
+      price1
+      price2
+      price3
+      price4
+      pricesIntro
+      slug
+      specialPrice1
+      specialPrice2
+      specialPrice3
+      specialPrice4
+      specialPricesIntro
+      title
+      featuredImage {
+        ...FileFieldFragment
+      }
+      content {
+        ...ActivityModelContentFieldFragment
+      }
+    }
+  }
+  ${ActivityModelContentFieldFragment}
+  ${FileFieldFragment}
 `;
 
 export const formatDate = (date: string) => format(parseISO(date), 'PPP');

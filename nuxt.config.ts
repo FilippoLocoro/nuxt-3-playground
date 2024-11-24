@@ -70,6 +70,51 @@ export default defineNuxtConfig({
       { code: 'it', language: 'it-IT', name: 'Italiano' },
     ],
     defaultLocale: 'it',
+    customRoutes: 'config', // disable custom route with page components
+    // detectBrowserLanguage: {
+    //   useCookie: true,
+    //   cookieKey: 'i18n_redirected',
+    //   alwaysRedirect: false,
+    //   fallbackLocale: 'en',
+    // },
+    pages: {
+      'all-courses': {
+        it: '/corsi-e-lezioni',
+        en: '/courses-and-lessons',
+      },
+      ski: {
+        it: '/sci',
+        en: '/ski',
+      },
+      snowboard: {
+        it: '/snowboard',
+        en: '/snowboard',
+      },
+      prices: {
+        it: '/tariffe',
+        en: '/prices',
+      },
+      faq: {
+        it: '/domande-frequenti',
+        en: '/faq',
+      },
+      'how-to-reach-us': {
+        it: '/come-raggiungerci',
+        en: '/how-to-reach-us',
+      },
+      contacts: {
+        it: '/contatti',
+        en: '/contacts',
+      },
+      'activity-slug': {
+        it: '/corso/[slug]',
+        en: '/activity/[slug]',
+      },
+      'corso-slug': {
+        it: '/corso/[slug]',
+        en: '/activity/[slug]',
+      },
+    },
     vueI18n: './i18n.config.ts',
   },
   build: {
@@ -78,6 +123,28 @@ export default defineNuxtConfig({
   typescript: {
     strict: true, // Enforce strict TypeScript checks
   },
+  // hooks: {
+  //   async 'prerender:routes'(ctx) {
+  //     const strapiUrl = process.env.STRAPI_URL
+  //     const postsResponse = await fetch(`${strapiUrl}/api/posts?publicationState=live&locale=all&pagination[page]=1&pagination[pageSize=1000]`)
+  //     const posts: Strapi4ResponseMany<Post> = await postsResponse.json()
+
+  //     const routes = posts.data.map((post: Strapi4ResponseData<Post>) => {
+  //       const locale = post.attributes.locale
+  //       const slug = post.attributes.slug
+
+  //       if (locale === 'de') {
+  //         return `/posts/${slug}`
+  //       } else {
+  //         return `/${locale}/posts/${slug}`
+  //       }
+  //     })
+
+  //     for (const route of routes) {
+  //       ctx.routes.add(route)
+  //     }
+  //   }
+  // }
 
   // generate: {
   //   fallback: true, // Ensure correct fallback for static hosting
