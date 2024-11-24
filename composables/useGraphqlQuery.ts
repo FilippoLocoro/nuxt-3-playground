@@ -26,8 +26,6 @@ export default async function useGraphqlQuery({
       variables,
     }),
     transform: ({ data, errors }) => {
-      console.log('data', data);
-
       if (errors) {
         console.log('errors', errors);
 

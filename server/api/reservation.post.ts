@@ -108,8 +108,6 @@ export default defineEventHandler(async (event) => {
           marketingFlag,
         },
       });
-
-      console.log('api/contacts/ - resposne', response);
     }
 
     const sendRequest = await mailjet.post('send', { version: 'v3.1' }).request({

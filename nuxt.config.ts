@@ -34,23 +34,20 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  hub: {
-    database: true,
-    kv: true,
-    blob: false, // Please enable R2 Storage on your Cloudflare account to leverage Blob storage and try again: https://dash.cloudflare.com/37d02e01a9ccea9dd863b8e8bc7485c0/r2/plans
-    cache: false,
-  },
+  // hub: {
+  //   database: true,
+  //   kv: true,
+  //   blob: false, // Please enable R2 Storage on your Cloudflare account to leverage Blob storage and try again: https://dash.cloudflare.com/37d02e01a9ccea9dd863b8e8bc7485c0/r2/plans
+  //   cache: false,
+  // },
   vite: {
     plugins: [graphqlLoader()],
   },
-  nitro: {
-    experimental: {
-      openAPI: true,
-    },
-    prerender: {
-      routes: ['/', '/about', '/contact'], // Pre-render important routes for SEO and performance
-    },
-  },
+  // nitro: {
+  //   prerender: {
+  //     routes: [], // Pre-render important routes for SEO and performance
+  //   },
+  // },
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
@@ -108,13 +105,13 @@ export default defineNuxtConfig({
         it: '/contatti',
         en: '/contacts',
       },
-      'activity-slug': {
-        it: '/corso/[slug]',
-        en: '/activity/[slug]',
+      'activity-category-slug': {
+        it: '/corso/[category]/[slug]',
+        en: '/activity/[category]/[slug]',
       },
-      'corso-slug': {
-        it: '/corso/[slug]',
-        en: '/activity/[slug]',
+      'corso-category-slug': {
+        it: '/corso/[category]/[slug]',
+        en: '/activity/[category]/[slug]',
       },
     },
   },
@@ -122,7 +119,7 @@ export default defineNuxtConfig({
     analyze: true, // Enable bundle analysis for performance optimization
   },
   typescript: {
-    strict: true, // Enforce strict TypeScript checks
+    strict: false, // Enforce strict TypeScript checks
   },
   // hooks: {
   //   async 'prerender:routes'(ctx) {

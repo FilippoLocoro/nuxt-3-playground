@@ -66,6 +66,9 @@ useHead({
   bodyAttrs: {
     class: 'bg-white',
   },
+  htmlAttrs: {
+    'data-theme': 'v1',
+  },
   script: [{ innerHTML: 'console.log("Hello Nuxt")', type: 'text/javascript' }],
 })
 </script>

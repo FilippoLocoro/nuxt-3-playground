@@ -31,7 +31,8 @@
                     <ul v-if="page.activities.length" class="pl-5 md:hidden">
                         <li v-for="activity in page.activities" :key="`${page.id}-${page.slug}`">
                             <NuxtLinkLocale v-if="activity.slug" @click="closeMenu"
-                                :to="`${pathForLink()}/${categoryForLink(activity.category)}/${activity.slug}`">
+                                :to="{ name: 'activity-category-slug', params: { category: activity.category, slug: activity.slug } }"
+                                :locale="locale">
                                 {{ activity.title }}
                             </NuxtLinkLocale>
                         </li>

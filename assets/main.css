@@ -37,3 +37,7 @@ h6 {
 .menu :where(li:not(.menu-title, .tooltip) > *:not(ul, .collapse, .menu-title, .btn)) {
   @apply px-0 py-2;
 }
+
+.block-image-content img {
+  @apply object-cover w-full h-full;
+}

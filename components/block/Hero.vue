@@ -1,5 +1,5 @@
 <template>
-    <section class="block" :class="['block', { 'block--no-margin': noMargin }]">
+    <section :class="['block', { 'block--no-margin': noMargin }]">
         <div class="hero relative flex items-center justify-center min-h-[60vh] p-5 bg-cover bg-center text-center text-white bg-center"
             :style="{ 'background-image': `url(${block.image?.url || 'default-image.jpg'})` }">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -11,10 +11,10 @@
     }]">{{ block.category }}</div>
 
                 </div>
-                <h1 v-if="block.title" class="text-3xl font-bold leading-tight mb-3 md:text-4xl lg:text-4xl text-white">
+                <h1 v-if="block.title" class="text-4xl font-bold leading-tight mb-3 md:text-4xl lg:text-6xl text-white">
                     {{ block.title }}
                 </h1>
-                <h2 v-if="block.subtitle" class="text-sm font-light md:text-lg lg:text-xl text-white">{{ block.subtitle
+                <h2 v-if="block.subtitle" class="text-sm font-medium md:text-lg lg:text-xl text-white">{{ block.subtitle
                     }}
                 </h2>
                 <a v-if="block.action" :href="block.action" :class="['btn btn-lg', {
@@ -25,8 +25,8 @@
                 </a>
             </div>
         </div>
-        <div v-if="block.content" class="container mx-auto p-8">
-            <datocms-structured-text :data="block.content" />
+        <div v-if="block.content" class="container mx-auto py-8">
+            <datocms-structured-text :data="block.content" class="text-black" />
         </div>
     </section>
 </template>

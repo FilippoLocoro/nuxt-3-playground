@@ -1,21 +1,5 @@
 import { format, parseISO } from 'date-fns';
 
-// export const responsiveImageFields = `
-//   fragment responsiveImageFields on ResponsiveImage {
-//     aspectRatio
-//     alt
-//     base64
-//     bgColor
-//     height
-//     sizes
-//     src
-//     srcSet
-//     title
-//     webpSrcSet
-//     width
-//   }
-// `;
-
 export const PageModelContentFieldFragment = `
   fragment PageModelContentFieldFragment on PageModelContentField {
     blocks
@@ -212,36 +196,15 @@ ${PageModelContentFieldFragment}
 ${FileFieldFragment}
 `;
 
-export const categoryQuery = `
-query Category($slug: String!, $locale: SiteLocale!) {
-  category(locale: $locale, filter: {slug: {eq: $slug}}) {
-    slug(
-    title(locale: $locale)
+export const AllActivitiesByCategoryQuery = `
+query AllActivitiesByCategory($locale: SiteLocale!, $category: String) {
+  allActivities(filter: {category: {eq: $category}}, locale: $locale) {
     id
+    title
+    category
+    slug
     featuredImage {
       ...FileFieldFragment
-    }
-    content {
-      ...PageModelContentFieldFragment
-    }
-  }
-}
-${PageModelContentFieldFragment}
-${FileFieldFragment}
-`;
-
-export const allCategoriesQuery = `
-query AllCategories($locale: SiteLocale!) {
-  allCategories {
-    id
-    title(locale: $locale)
-    slug(
-    featuredImage {
-      ...FileFieldFragment
-    }
-    link {
-      slug(
-      title(locale: $locale)
     }
   }
 }
@@ -321,6 +284,20 @@ export const ActivityBySlugQuery = `
   }
   ${ActivityModelContentFieldFragment}
   ${FileFieldFragment}
+`;
+
+export const AllFaqsQuery = `
+query AllFaqs($locale: SiteLocale!) {
+  allFaqs(locale: $locale) {
+    id
+    title
+    content {
+      value
+      links
+      blocks
+    }
+  }
+}
 `;
 
 export const formatDate = (date: string) => format(parseISO(date), 'PPP');

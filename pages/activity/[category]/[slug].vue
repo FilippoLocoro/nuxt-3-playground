@@ -8,11 +8,16 @@
             <BlockContent :block="contentBlock" />
             <BlockActivityPrices :block="activityPricesBlock" />
         </div>
+        <div class="bg-white py-8">
+            <div class="container mx-auto">
+                <BlockFaqs :faqs="faqs" />
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ActivityBySlugQuery } from '~/utils/graphql'
+import { ActivityBySlugQuery, AllFaqsQuery } from '~/utils/graphql'
 import { useCategoryCheck } from '~/composables/useCategoryCheck';
 
 const setI18nParams = useSetI18nParams()
@@ -23,17 +28,23 @@ const { isCategorySnowboard, isCategorySki } = useCategoryCheck(category);
 
 const { locale } = useI18n()
 const page = ref({})
+const faqs = ref({})
 
 async function fetchData() {
     try {
-        const [pageData] = await Promise.all([
+        const [pageData, allFaqsData] = await Promise.all([
             useGraphqlQuery({
                 query: ActivityBySlugQuery,
                 variables: { slug: slug, locale: locale.value }
             }),
+            useGraphqlQuery({
+                query: AllFaqsQuery,
+                variables: { locale: locale.value }
+            })
         ]);
 
         page.value = pageData?.data?.value?.activity || {}
+        faqs.value = allFaqsData?.data?.value?.allFaqs || {}
 
     } catch (error) {
         page.value = {};

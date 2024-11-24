@@ -6,10 +6,12 @@ export default defineI18nConfig(() => ({
     en: {
       'Price list': 'Price list',
       'Book now': 'Book',
+      'Discover more': 'Discover more',
     },
     it: {
       'Price list': 'Listino prezzi',
       'Book now': 'Prenota',
+      'Discover more': 'Scopri di più',
     },
   },
 }));
