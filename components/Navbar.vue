@@ -6,8 +6,8 @@
                     <Logo />
                 </a>
             </div>
-            <div class="flex gap-4 items-center flex-row-reverse md:hidden">
-                <div>
+            <div class="flex gap-4 items-center flex-row-reverse">
+                <div class="md:hidden">
                     <button @click="toggleMenu" type="button"
                         class="collapse-toggle btn btn-outline btn-secondary btn-sm btn-square"
                         data-collapse="#sticky-navbar-collapse" aria-controls="sticky-navbar-collapse"
@@ -75,18 +75,6 @@ const fetchData = async () => {
 
 // Watch for changes in `locale` and refetch data
 watch(() => locale.value, fetchData, { immediate: true })
-
-const pathForLink = () => {
-    return locale.value === 'en' ? '/activity' : '/corso'
-}
-
-const categoryForLink = (category) => {
-    if (category === 'ski' && locale.value === 'it') {
-        return 'sci'
-    } else {
-        return category
-    }
-}
 
 const toggleMenu = () => {
     isOpen.value = !isOpen.value

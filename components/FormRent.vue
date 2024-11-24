@@ -2,7 +2,6 @@
   <div>
     <div v-if="complete">
       <h2 class="text-xl text-green-500">Submission successful!</h2>
-      <!-- <button @click="resetForm">Restart</button> -->
     </div>
     <FormKit type="form" id="rentForm" :form-class="complete ? 'hide' : 'show'" submit-label="This is a submit label"
       @submit="submitHandler" :submit-attrs="{

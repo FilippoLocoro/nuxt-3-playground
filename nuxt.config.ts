@@ -27,6 +27,8 @@ export default defineNuxtConfig({
       rent: process.env.RENT_EMAIL || '',
       from: process.env.FROM_EMAIL || '',
       bcc: process.env.BCC_EMAIL || '',
+      activitySky: process.env.ACTIVITY_EMAIL_SKI || '',
+      activitySnowboard: process.env.ACTIVITY_EMAIL_SNOWBOARD || '',
     },
     mailjet: {
       publicKey: process.env.MJ_APIKEY_PUBLIC || '',
@@ -106,10 +108,6 @@ export default defineNuxtConfig({
         en: '/contacts',
       },
       'activity-category-slug': {
-        it: '/corso/[category]/[slug]',
-        en: '/activity/[category]/[slug]',
-      },
-      'corso-category-slug': {
         it: '/corso/[category]/[slug]',
         en: '/activity/[category]/[slug]',
       },

@@ -1,11 +1,12 @@
 <template>
-    <div class="block relative">
-        <div class="grid md:grid-cols-2 px-8 gap-8">
-            <div v-for="faq in faqs" :key="faq.id">
+    <div class="block relative py-8">
+        <h2 class="mb-4">{{ $t('Frequently Asked Questions') }}</h2>
+        <ul class="grid md:grid-cols-2 gap-8">
+            <li v-for="faq in faqs" :key="faq.id">
                 <h3 v-if="faq.title" class="font-bold text-xl">{{ faq.title }}</h3>
                 <structured-text v-if="faq.content" :data="faq.content" class="text-black" />
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 

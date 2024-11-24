@@ -80,3 +80,32 @@ export function generateReservationEmailTemplate({
     <div>${reservationId}</div>
 `;
 }
+
+export function generateActivityEmailTemplate({
+  activity,
+  customer,
+  city,
+  email,
+  telephone,
+  category,
+  message,
+  privacyFlag,
+}) {
+  return `
+    <h1>Prenotazione per <b>${activity}</b></h1>
+    <hr>
+    <h2>Dati cliente</h2>
+    <div>Cliente: ${customer}</div>
+    <div>Email: ${email}</div>
+    <div>Telefono: ${telephone}</div>
+    <div>Città: ${city}</div>
+    <div>Categoria: ${category}</div>
+    <hr>
+    Messaggio: 
+    <br>
+    ${message}
+    <hr>
+    <h2>Consensi</h2>
+    <div>Privacy: ${privacyFlag}</div>
+`;
+}

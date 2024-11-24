@@ -4,12 +4,13 @@
         'bg-secondary text-white': isCategorySnowboard
     }]">
         <BlockHero :block="heroBlock" no-margin />
-        <div class="container mx-auto p-8">
+        <div class="container mx-auto p-6">
             <BlockContent :block="contentBlock" />
             <BlockActivityPrices :block="activityPricesBlock" />
         </div>
         <div class="bg-white py-8">
-            <div class="container mx-auto">
+            <div class="container mx-auto p-6 text-black">
+                <FormActivity :category="category" :activity="page.title" />
                 <BlockFaqs :faqs="faqs" />
             </div>
         </div>

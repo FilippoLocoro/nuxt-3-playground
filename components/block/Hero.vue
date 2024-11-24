@@ -1,6 +1,6 @@
 <template>
     <section :class="['block', { 'block--no-margin': noMargin }]">
-        <div class="hero relative flex items-center justify-center min-h-[60vh] p-8 bg-cover bg-center text-center text-white bg-center"
+        <div class="hero relative flex items-center justify-center min-h-[600px] p-6 bg-cover bg-center text-center text-white bg-center"
             :style="{ 'background-image': `url(${block.image?.url || 'default-image.jpg'})` }">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
@@ -20,12 +20,12 @@
                 <a v-if="block.action" :href="block.action" :class="['btn btn-lg', {
         'btn-primary': isCategorySki,
         'btn-secondary': isCategorySnowboard
-    }]">
+    }]" disabled>
                     {{ $t('Book now') }}
                 </a>
             </div>
         </div>
-        <div v-if="block.content" class="container mx-auto py-8 px-8">
+        <div v-if="block.content" class="container mx-auto py-8 px-6">
             <datocms-structured-text :data="block.content" class="text-black" />
         </div>
     </section>
