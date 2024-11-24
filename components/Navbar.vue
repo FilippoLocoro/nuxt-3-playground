@@ -31,7 +31,7 @@
                     <ul v-if="page.activities.length" class="pl-5 md:hidden">
                         <li v-for="activity in page.activities" :key="`${page.id}-${page.slug}`">
                             <NuxtLinkLocale v-if="activity.slug" @click="closeMenu"
-                                :to="`${pathForLink()}/${activity.category}/${activity.slug}`">
+                                :to="`${pathForLink()}/${categoryForLink(activity.category)}/${activity.slug}`">
                                 {{ activity.title }}
                             </NuxtLinkLocale>
                         </li>
@@ -77,6 +77,14 @@ watch(() => locale.value, fetchData, { immediate: true })
 
 const pathForLink = () => {
     return locale.value === 'en' ? '/activity' : '/corso'
+}
+
+const categoryForLink = (category) => {
+    if (category === 'ski' && locale.value === 'it') {
+        return 'sci'
+    } else {
+        return category
+    }
 }
 
 const toggleMenu = () => {

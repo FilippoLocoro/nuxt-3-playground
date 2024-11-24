@@ -65,6 +65,8 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
+    vueI18n: './i18n.config.ts',
+
     locales: [
       { code: 'en', language: 'en-US', name: 'English (US)' },
       { code: 'it', language: 'it-IT', name: 'Italiano' },
@@ -75,7 +77,7 @@ export default defineNuxtConfig({
     //   useCookie: true,
     //   cookieKey: 'i18n_redirected',
     //   alwaysRedirect: false,
-    //   fallbackLocale: 'en',
+    //   fallbackLocale: 'it',
     // },
     pages: {
       'all-courses': {
@@ -115,7 +117,6 @@ export default defineNuxtConfig({
         en: '/activity/[slug]',
       },
     },
-    vueI18n: './i18n.config.ts',
   },
   build: {
     analyze: true, // Enable bundle analysis for performance optimization

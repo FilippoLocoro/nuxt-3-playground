@@ -4,21 +4,30 @@
             :style="{ 'background-image': `url(${block.image?.url || 'default-image.jpg'})` }">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
             <div class="relative z-10 max-w-2xl mx-auto">
-                <h1 v-if="block.title" class="text-2xl font-bold leading-tight mb-3 md:text-3xl lg:text-4xl text-white">
+                <div class="flex item-center justify-center my-2">
+                    <div v-if="block.category" :class="['inline uppercase font-bold text-md px-4', {
+        'bg-primary': isCategorySki,
+        'bg-secondary': isCategorySnowboard
+    }]">{{ block.category }}</div>
+
+                </div>
+                <h1 v-if="block.title" class="text-3xl font-bold leading-tight mb-3 md:text-4xl lg:text-4xl text-white">
                     {{ block.title }}
                 </h1>
                 <h2 v-if="block.subtitle" class="text-sm font-light md:text-lg lg:text-xl text-white">{{ block.subtitle
                     }}
                 </h2>
-                <!-- <span v-if="block.category" class="badge badge-primary badge-xl uppercase"
-                    :class="['badge badge-xl', { 'badge-primary': isCategorySki, 'badge-secondary': isCategorySnowboard }]">
-                    {{ block.category }}
-                </span> -->
+                <a v-if="block.action" :href="block.action" :class="['btn btn-lg', {
+        'btn-primary': isCategorySki,
+        'btn-secondary': isCategorySnowboard
+    }]">
+                    {{ $t('Book now') }}
+                </a>
             </div>
         </div>
-        <!-- <div class="container mx-auto p-8">
+        <div v-if="block.content" class="container mx-auto p-8">
             <datocms-structured-text :data="block.content" />
-        </div> -->
+        </div>
     </section>
 </template>
 
@@ -26,7 +35,15 @@
 
 <script setup lang="ts">
 import { StructuredText as DatocmsStructuredText } from 'vue-datocms';
+import { useCategoryCheck } from '~/composables/useCategoryCheck';
 
-const { block = {}, noMargin = false } = defineProps<{ block?: any; noMargin?: boolean }>()
+const route = useRoute()
+const category = ref(route.params.category || '');
+const { isCategorySnowboard, isCategorySki } = useCategoryCheck(category);
+
+const {
+    block = {},
+    noMargin = false,
+} = defineProps<{ block?: any; noMargin?: boolean }>()
 
 </script>

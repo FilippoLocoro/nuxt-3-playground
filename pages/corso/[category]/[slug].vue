@@ -4,11 +4,9 @@
         'bg-secondary text-white': isCategorySnowboard
     }]">
         <BlockHero :block="heroBlock" no-margin />
-        <div class="container mx-auto px-8 my-4">
-            <div class="uppercase font-bold text-xl">{{ category }}</div>
-        </div>
-        <div class="container mx-auto py-4 px-8">
+        <div class="container mx-auto p-8">
             <BlockContent :block="contentBlock" />
+            <BlockActivityPrices :block="activityPricesBlock" />
         </div>
     </div>
 </template>
@@ -50,9 +48,10 @@ const heroBlock = computed(() => {
         title: page.value?.title,
         subtitle: page.value?.subtitle,
         image: {
-            url: page.value?.featuredImage?.url
+            url: page.value?.featuredImage?.url || null
         },
-        category: page.value.category
+        category: page.value?.category,
+        action: '#'
     }
 });
 
@@ -62,9 +61,24 @@ const contentBlock = computed(() => {
     }
 });
 
+const activityPricesBlock = computed(() => {
+    return {
+        pricesIntro: page.value?.pricesIntro,
+        price1: page.value?.price1,
+        price2: page.value?.price2,
+        price3: page.value?.price3,
+        price4: page.value?.price4,
+        specialPricesIntro: page.value?.specialPricesIntro,
+        specialPrice1: page.value?.specialPrice1,
+        specialPrice2: page.value?.specialPrice2,
+        specialPrice3: page.value?.specialPrice3,
+        specialPrice4: page.value?.specialPrice4,
+    }
+});
+
 setI18nParams({
     en: { slug: page.value?.slug },
     it: { slug: page.value?.slug }
 })
 
-</script>~/utils
+</script>

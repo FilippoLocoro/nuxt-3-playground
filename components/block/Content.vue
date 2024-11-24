@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="block relative">
         <structured-text :data="block.content" />
     </div>
 </template>
