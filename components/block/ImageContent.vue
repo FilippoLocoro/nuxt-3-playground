@@ -4,7 +4,7 @@
         <div class="absolute top-0 left-0 h-full w-full bg-black bg-opacity-30 z-5"></div>
         <div class="absolute top-0 left-0 h-full w-full z-10">
             <div class="flex flex-col items-center justify-center p-8 h-full w-full mx-auto">
-                <h2 class="text-white font-bold text-4xl">{{ block.title }}</h2>
+                <h2 class="text-white font-bold text-4xl text-center">{{ block.title }}</h2>
                 <!-- <datocms-structured-text :data="block.content" class="text-white" /> -->
                 <NuxtLinkLocale v-if="block.linkTo" :to="block.linkTo" class="text-white font-bold cursor-pointer">{{
         $t('Discover more') }}

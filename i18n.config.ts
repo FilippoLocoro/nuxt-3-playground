@@ -7,11 +7,15 @@ export default defineI18nConfig(() => ({
       'Price list': 'Price list',
       'Book now': 'Book',
       'Discover more': 'Discover more',
+      Ski: 'Ski',
+      Snowboard: 'Snowboard',
     },
     it: {
       'Price list': 'Listino prezzi',
       'Book now': 'Prenota',
       'Discover more': 'Scopri di più',
+      Ski: 'Sci',
+      Snowboard: 'Snowboard',
     },
   },
 }));

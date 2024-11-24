@@ -1,9 +1,9 @@
 <template>
     <section :class="['block', { 'block--no-margin': noMargin }]">
-        <div class="hero relative flex items-center justify-center min-h-[60vh] p-5 bg-cover bg-center text-center text-white bg-center"
+        <div class="hero relative flex items-center justify-center min-h-[60vh] p-8 bg-cover bg-center text-center text-white bg-center"
             :style="{ 'background-image': `url(${block.image?.url || 'default-image.jpg'})` }">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-            <div class="relative z-10 max-w-2xl mx-auto">
+            <div class="relative z-10 max-w-4xl mx-auto">
                 <div class="flex item-center justify-center my-2">
                     <div v-if="block.category" :class="['inline uppercase font-bold text-md px-4', {
         'bg-primary': isCategorySki,
@@ -11,7 +11,7 @@
     }]">{{ block.category }}</div>
 
                 </div>
-                <h1 v-if="block.title" class="text-4xl font-bold leading-tight mb-3 md:text-4xl lg:text-6xl text-white">
+                <h1 v-if="block.title" class="text-4xl font-bold leading-tight mb-3 md:text-4xl lg:text-5xl text-white">
                     {{ block.title }}
                 </h1>
                 <h2 v-if="block.subtitle" class="text-sm font-medium md:text-lg lg:text-xl text-white">{{ block.subtitle
@@ -25,7 +25,7 @@
                 </a>
             </div>
         </div>
-        <div v-if="block.content" class="container mx-auto py-8">
+        <div v-if="block.content" class="container mx-auto py-8 px-8">
             <datocms-structured-text :data="block.content" class="text-black" />
         </div>
     </section>

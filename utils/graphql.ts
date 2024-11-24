@@ -77,7 +77,7 @@ export const siteQuery = `
 
 export const AllPagesLinks = `
   query AllPagesLinks($locale: SiteLocale!) {
-    allPages(locale: $locale) {
+    allPages(locale: $locale, orderBy: menuPosition_ASC) {
       id
       title(locale: $locale)
       slug
@@ -93,7 +93,7 @@ export const AllPagesLinks = `
 
 export const PageBySlugQuery = `
 query PageBySlug($slug: String!, $locale: SiteLocale!) {
-  page(filter: {slug: {eq: $slug}}, locale: $locale) {
+  page(filter: {slug: {eq: $slug}}, locale: $locale, orderBy: menuPosition_ASC) {
     id
     slug
     title(locale: $locale)
@@ -198,7 +198,7 @@ ${FileFieldFragment}
 
 export const AllActivitiesByCategoryQuery = `
 query AllActivitiesByCategory($locale: SiteLocale!, $category: String) {
-  allActivities(filter: {category: {eq: $category}}, locale: $locale) {
+  allActivities(filter: {category: {eq: $category}}, locale: $locale, orderBy: order_ASC) {
     id
     title
     category
@@ -219,7 +219,8 @@ query AllActivities($locale: SiteLocale!, $category: String) {
         { category: { eq: $category } }
         { category: { in: ["snowboard", "sky"] }, eq: "tutti-i-corsi" }
       ]
-    }
+    },
+    orderBy: order_ASC
   ){
     content(locale: $locale) {
       ...ActivityModelContentFieldFragment
